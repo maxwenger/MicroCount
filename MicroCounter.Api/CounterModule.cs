@@ -1,12 +1,38 @@
-using Nancy;
+using System;
+using Sider;
 
 namespace MicroCounter.Api 
 {
-    public class CounterModule : NancyModule 
+    public class CounterModule : Nancy.NancyModule 
     {
+        private readonly RedisClient redis = new RedisClient();
+        private const string COUNT_KEY = "count";
+        
+
         public CounterModule()
         {
-            Get("/", args => "This finally works, it only took *all night*. But what can you ask for, except to not wipe your hard drive -- or .Net to change config files -- or not to write RAW BIANARY DATA TO THE CSPROJ FILE. But you know, job security. Now to get redis online.");
+            
+             Get("/", args => GetCount().ToString());
+             Post("/", args => PostCount().ToString());
+        }
+
+        private int GetCount() 
+        {
+            var i = 0;
+            
+            var value = redis.Get(COUNT_KEY);
+            Int32.TryParse(value, out i);
+            
+            return i;
+        }
+
+        private bool PostCount()
+        {
+            var value = GetCount();
+            value++;
+            redis.Set(COUNT_KEY, value.ToString());
+            
+            return true;
         }
     }
 }
