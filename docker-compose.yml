@@ -1,0 +1,13 @@
+version: '3'
+
+services:
+    micro-counter-api:
+        build: ./MicroCounter.Api
+        ports:
+            - 5000:8080
+        depends_on:
+            - micro-counter-count-store
+    micro-counter-count-store:
+        image: "redis:alpine"
+        ports:
+            - 6379:6379
