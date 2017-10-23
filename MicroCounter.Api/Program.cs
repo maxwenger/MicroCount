@@ -21,7 +21,7 @@ namespace MicroCounter.Api
             WebHost.CreateDefaultBuilder(args)
                 .UseKestrel()
                 .UseStartup<Startup>()
-                .UseUrls("http://0.0.0.0:8080")
+                .UseUrls("http://0.0.0.0:80")
                 .Build();
     }
 }

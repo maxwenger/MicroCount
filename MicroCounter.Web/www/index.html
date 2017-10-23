@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Counter API Interface!!</title>
+        <link rel="stylesheet" type="text/css" href="style.css" />
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script> 
+        <script src="script.js"></script>       
+    </head>
+    <body>
+        <h1>Welcome To The Web Interface For The Awesome Counter API</h1>
+        <h3>The counter API counts how many times a POST request has been made. <br /> A POST request adds one, and a GET request returns the count.</h3>
+
+        <p id="count">Count: </p>
+
+        <table id="button-table">
+            <tr>
+                <td>
+                    <div id="get">GET</div>
+                </td>
+                <td>
+                    <div id="post">POST</div>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <select id="requests" size="10" onchange="onRequestListChange()">
+                    </select>
+                </td>
+                <td>
+                    <textarea id="selectedRequestData" rows="10"></textarea>
+                </td>
+            </tr>
+        </table>
+
+                  
+    </body>
+</html>

@@ -1,0 +1,46 @@
+h1, h3 {
+    text-align: center;
+}
+
+#count{
+    font-size: 125px;
+    text-align: center;
+}
+
+#button-table {
+    text-align: center;
+    width: 100%;
+    table-layout: fixed;
+}
+
+#button-table td div {
+    padding-top: 20px;
+    padding-bottom: 20px;
+}
+
+#get {
+    background-color: green;
+}
+
+#post {
+    background-color: red;    
+}
+
+#get, #post {
+    -webkit-touch-callout: none; 
+    -webkit-user-select: none; 
+    -khtml-user-select: none; 
+    -moz-user-select: none; 
+    -ms-user-select: none; 
+    user-select: none;
+}
+
+#get:hover, #post:hover {
+    box-shadow: 10px 10px 5px #888888;
+    cursor: pointer;  
+}
+
+#requests, #selectedRequestData {
+    width: 100%;
+    height: auto;
+}

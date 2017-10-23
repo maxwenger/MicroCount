@@ -1,4 +1,5 @@
 using System;
+using Nancy;
 using Sider;
 
 namespace MicroCounter.Api 
@@ -11,8 +12,10 @@ namespace MicroCounter.Api
 
         public CounterModule()
         {
-            Get("/", args => GetCount().ToString());
-            Post("/", args => PostCount().ToString());
+            EnableCORS();
+            
+            Get("/api/", args => GetCount().ToString());
+            Post("/api/", args => PostCount().ToString());
         }
 
         private int GetCount() 
@@ -34,5 +37,11 @@ namespace MicroCounter.Api
             
             return true;
         }
+        
+        private void EnableCORS() =>
+            After.AddItemToEndOfPipeline((ctx) => ctx.Response
+                .WithHeader("Access-Control-Allow-Origin", "*")
+                .WithHeader("Access-Control-Allow-Methods", "POST,GET")
+                .WithHeader("Access-Control-Allow-Headers", "Accept, Origin, Content-type"));
     }
 }

@@ -1,13 +1,27 @@
 version: '3'
 
 services:
+    micro-counter-proxy:
+        build: ./MicroCounter.Proxy
+        ports:
+            - 80:80
+        depends_on:
+            - micro-counter-web
+            - micro-counter-api
+    micro-counter-web:
+        build: ./MicroCounter.Web
+        #ports:
+#            - 80:80
+#            - 443:443
+        depends_on:
+            - micro-counter-api
     micro-counter-api:
         build: ./MicroCounter.Api
-        ports:
-            - 5000:8080
+        #ports:
+#            - 5000:8080
         depends_on:
             - micro-counter-count-store
     micro-counter-count-store:
         image: "redis:alpine"
-        ports:
-            - 6379:6379
+        #ports:
+#            - 6379:6379
